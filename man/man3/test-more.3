@@ -70,8 +70,8 @@
 .rr rF
 .\" ========================================================================
 .\"
-.IX Title "IO::FILE=IO(0X1EBDF70) 1"
-.TH IO::FILE=IO(0X1EBDF70) 1 "2014-07-05" "perl v5.18.1" "User Contributed Perl Documentation"
+.IX Title "IO::FILE=IO(0XAE6EE0) 1"
+.TH IO::FILE=IO(0XAE6EE0) 1 "2014-07-05" "perl v5.18.1" "User Contributed Perl Documentation"
 .\" For nroff, turn off justification.  Always turn off hyphenation; it makes
 .\" way too many mistakes in technical documents.
 .if n .ad l
@@ -86,9 +86,18 @@ Write a test file like this. Maybe call it \f(CW\*(C`test/test.t\*(C'\fR:
 .Vb 1
 \&    #!/usr/bin/env bash
 \&
-\&    source test/more.bash
+\&    TEST_MORE_PATH="/path/to/test\-more\-bash"
+\&    BASHLIB="\`
+\&        find $TEST_MORE_PATH \-type d |
+\&        grep \-E \*(Aq/(bin|lib)$\*(Aq |
+\&        xargs \-n1 printf "%s:"\`"
+\&    PATH="$BASHLIB$PATH"
 \&
-\&    plan tests 10
+\&    source bash+ :std
+\&
+\&    use Test::More
+\&
+\&    plan tests 8
 \&
 \&    some\-command
 \&    ok $? \*(Aqsome\-command is ok\*(Aq
