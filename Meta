@@ -26,5 +26,5 @@ install:
 
 devel:
   git: git@github.org/ingydotnet/test-more-bash.git
-  irc: irc.freenode.net/bpan
+  irc: irc.freenode.net#bpan
   bug: https://github.com/ingydotnet/test-more-bash/issues/
