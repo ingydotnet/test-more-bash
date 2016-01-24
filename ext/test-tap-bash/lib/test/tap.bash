@@ -6,7 +6,7 @@
 Test::Tap:die() { echo "$@" >&2; trap EXIT; exit 1; }
 #------------------------------------------------------------------------------
 
-Test__Tap_VERSION=0.0.3
+Test__Tap_VERSION=0.0.4
 
 Test::Tap:init() {
   [ -n "$BASH_SOURCE" ] ||
