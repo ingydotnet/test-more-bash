@@ -4,7 +4,7 @@
 
 set -e
 
-Test__More_VERSION=0.0.2
+Test__More_VERSION=0.0.3
 
 source bash+ :std
 use Test::Tap
