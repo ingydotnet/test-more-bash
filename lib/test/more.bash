@@ -1,6 +1,6 @@
 # test/more.bash - Complete TAP test framework for Bash
 #
-# Copyright (c) 2013-2015. Ingy döt Net.
+# Copyright (c) 2013-2016. Ingy döt Net.
 
 set -e
 
