@@ -30,7 +30,8 @@ is() {
 }
 
 Test::More:is-fail() {
-  local Test__Tap_CALL_STACK_LEVEL=$(( Test__Tap_CALL_STACK_LEVEL + 1 ))
+  local Test__Tap_CALL_STACK_LEVEL=
+  Test__Tap_CALL_STACK_LEVEL=$(( Test__Tap_CALL_STACK_LEVEL + 1 ))
   if [[ "$want" =~ \n ]]; then
     echo "$got" > /tmp/got-$$
     echo "$want" > /tmp/want-$$
@@ -45,7 +46,8 @@ Test::More:is-fail() {
 }
 
 isnt() {
-  local Test__Tap_CALL_STACK_LEVEL=$(( Test__Tap_CALL_STACK_LEVEL + 1 ))
+  local Test__Tap_CALL_STACK_LEVEL=
+  Test__Tap_CALL_STACK_LEVEL=$(( Test__Tap_CALL_STACK_LEVEL + 1 ))
   local got="$1" dontwant="$2" label="$3"
   if [ "$got" != "$dontwant" ]; then
     Test::Tap:pass "$label"
