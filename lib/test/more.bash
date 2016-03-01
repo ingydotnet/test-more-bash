@@ -22,7 +22,7 @@ BAIL_ON_FAIL() { Test::Tap:BAIL_ON_FAIL "$@"; }
 
 is() {
   local got="$1" want="$2" label="$3"
-  if [ "$got" == "$want" ]; then
+  if [[ $got == "$want" ]]; then
     Test::Tap:pass "$label"
   else
     Test::Tap:fail "$label" Test::More:is-fail
@@ -49,7 +49,7 @@ isnt() {
   local Test__Tap_CALL_STACK_LEVEL=
   Test__Tap_CALL_STACK_LEVEL=$(( Test__Tap_CALL_STACK_LEVEL + 1 ))
   local got="$1" dontwant="$2" label="$3"
-  if [ "$got" != "$dontwant" ]; then
+  if [[ $got != "$dontwant" ]]; then
     Test::Tap:pass "$label"
   else
     Test::Tap:fail "$label" Test::More:isnt-fail
@@ -70,7 +70,7 @@ ok() {
 
 like() {
   local got=$1 regex=$2 label=$3
-  if [[ "$got" =~ "$regex" ]]; then
+  if [[ $got =~ "$regex" ]]; then
     Test::Tap:pass "$label"
   else
     Test::Tap:fail "$label" Test::More:like-fail
@@ -83,7 +83,7 @@ Test::More:like-fail() {
 
 unlike() {
   local got=$1 regex=$2 label=$3
-  if [[ ! "$got" =~ "$regex" ]]; then
+  if [[ ! $got =~ "$regex" ]]; then
     Test::Tap:pass "$label"
   else
     Test::Tap:fail "$label" Test::More:unlike-fail
