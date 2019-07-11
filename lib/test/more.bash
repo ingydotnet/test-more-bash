@@ -93,3 +93,14 @@ unlike() {
 Test::More:unlike-fail() {
     Test::Tap:diag "Got: '$got'"
 }
+
+cmp-array() {
+    local arrayname="$1[@]"
+    local expname="$2[@]"
+    local label="$3"
+
+    local array=(${!arrayname})
+    local expected=(${!expname})
+
+    is "$(printf "%s\n" "${array[@]}")" "$(printf "%s\n" "${expected[@]}")" "$label"
+}
