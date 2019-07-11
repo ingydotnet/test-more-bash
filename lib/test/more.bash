@@ -35,7 +35,7 @@ Test::More:is-fail() {
   if [[ $want =~ $'\n' ]]; then
     echo "$got" > /tmp/got-$$
     echo "$want" > /tmp/want-$$
-    diff -u /tmp/{want,got}-$$ >&2
+    diff -u /tmp/{want,got}-$$ >&2 || true
     wc /tmp/{want,got}-$$ >&2
     rm -f /tmp/{got,want}-$$
   else
