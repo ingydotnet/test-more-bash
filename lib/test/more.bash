@@ -32,7 +32,7 @@ is() {
 Test::More:is-fail() {
   local Test__Tap_CALL_STACK_LEVEL=
   Test__Tap_CALL_STACK_LEVEL=$(( Test__Tap_CALL_STACK_LEVEL + 1 ))
-  if [[ "$want" =~ \n ]]; then
+  if [[ $want =~ $'\n' ]]; then
     echo "$got" > /tmp/got-$$
     echo "$want" > /tmp/want-$$
     diff -u /tmp/{want,got}-$$ >&2
