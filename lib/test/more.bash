@@ -1,10 +1,10 @@
 # test/more.bash - Complete TAP test framework for Bash
 #
-# Copyright (c) 2013-2016. Ingy döt Net.
+# Copyright (c) 2013-2020. Ingy döt Net.
 
 set -e
 
-Test__More_VERSION=0.0.3
+Test__More_VERSION=0.0.4
 
 source bash+ :std
 use Test::Tap
