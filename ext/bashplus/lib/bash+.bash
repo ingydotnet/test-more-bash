@@ -25,7 +25,7 @@ bash+:export:std() { @ use die warn; }
 # Source a bash library call import on it:
 bash+:use() {
   local library_name="${1:?bash+:use requires library name}"; shift
-  local library_path=; library_path="$(bash+:findlib $library_name)"
+  local library_path=; library_path="$(bash+:findlib $library_name || true)"
   [[ -n $library_path ]] || {
     bash+:die "Can't find library '$library_name'." 1
   }
