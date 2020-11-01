@@ -5,7 +5,7 @@
 set -e -u -o pipefail
 
 # shellcheck disable=2034
-Test__More_VERSION=0.0.4
+Test__More_VERSION=0.0.5
 
 source bash+ :std version-check
 
