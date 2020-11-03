@@ -15,6 +15,8 @@ INSTALL_DIR  ?= test
 INSTALL_MAN1 ?= $(shell bpan env BPAN_MAN1)
 INSTALL_MAN3 ?= $(shell bpan env BPAN_MAN3)
 
+DOCKER_IMAGE := ingy/bash-testing:0.0.1
+
 default: help
 
 help:
@@ -23,6 +25,16 @@ help:
 .PHONY: test
 test:
 	prove $(PROVEOPT:%=% )test/
+
+test-all: test docker-test
+
+docker-test:
+	$(call docker-make-test,4.1)
+	$(call docker-make-test,4.2)
+	$(call docker-make-test,4.3)
+	$(call docker-make-test,4.4)
+	$(call docker-make-test,5.0)
+	$(call docker-make-test,5.1)
 
 install:
 	install -C -d -m 0755 $(INSTALL_LIB)/$(INSTALL_DIR)/
@@ -43,3 +55,17 @@ $(MAN1)/%.1: doc/%.swim
 
 $(MAN3)/%.3: doc/%.swim
 	swim --to=man $< > $@
+
+define docker-make-test
+	docker run -i -t --rm \
+	    -v $(PWD):/git-subrepo \
+	    -w /git-subrepo \
+	    $(DOCKER_IMAGE) \
+		/bin/bash -c ' \
+		    set -x && \
+		    [[ -d /bash-$(1) ]] && \
+		    export PATH=/bash-$(1)/bin:$$PATH && \
+		    bash --version && \
+		    make test \
+		'
+endef
